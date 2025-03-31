@@ -1,24 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import Home from "./pages/Home";
+import Proposals from "./pages/Proposals";
+import CreateProposal from "./pages/CreateProposal";
+import Chat from "./pages/Chat";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Navbar />
+      <div className="container mx-auto p-4">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/proposals" element={<Proposals />} />
+          <Route path="/create-proposal" element={<CreateProposal />} />
+          <Route path="/chat" element={<Chat />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/chat/:receiverId" element={<Chat />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
